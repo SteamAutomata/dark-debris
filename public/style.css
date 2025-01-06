@@ -1,0 +1,30 @@
+.aero-button {
+  padding: 8px;
+
+  background: rgb(146, 154, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(146, 154, 255, 1) 0%,
+    rgba(9, 9, 121, 1) 40%,
+    rgba(16, 31, 134, 1) 58%,
+    rgba(78, 225, 255, 1) 100%
+  );
+
+  color: aliceblue;
+
+  border-radius: 8px;
+}
+
+.card {
+  border-color: gray;
+  border-radius: 8px;
+  border-style: ridge;
+
+  margin: 8px;
+  padding: 8px;
+  max-width: 32rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,43 @@
+---
+import Pagination from "../../components/server/Pagination";
+import MainLayout from "../../layouts/MainLayout.astro";
+export const prerender = false;
+
+const page = Number(new URL(Astro.request.url).searchParams.get("p")) || 0;
+
+const result = await fetch(
+  `https://pokeapi.co/api/v2/pokemon/?offset=${page * 20}&limit=20`
+);
+const pokemons = await result.json();
+
+const images: Record<string, string> = {};
+
+pokemons.results.forEach((pokemon: any) => {
+  const url = (pokemon.url as string).split("/");
+  images[pokemon.name] = url[url.length - 2];
+});
+console.log(images)
+
+---
+
+<MainLayout>
+  <Pagination currentPage={page} pages={Math.floor(pokemons.count / 20)} />
+  <!-- Tous les pokémons -->
+  <div class="grid">
+    {
+      pokemons.results.map((pokemon: any) => (
+        <a href={`/pokemons/${pokemon.name}`}>
+          <div class="card">
+            <h3>{pokemon.name}</h3>
+            <!-- I hate myself -->
+            <img
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${images[pokemon.name]}.png`}
+              width="64px"
+              height="64px"
+            />
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</MainLayout>
