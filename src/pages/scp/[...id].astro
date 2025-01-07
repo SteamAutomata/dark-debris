@@ -1,0 +1,26 @@
+---
+import { db, eq, sql } from "astro:db";
+import MainLayout from "../../layouts/MainLayout.astro";
+import { ScpDescription } from "astro:db";
+
+// Activer le SSR plutôt que le SSG
+export const prerender = false;
+
+// Prendre le chemin dans l'URL
+const { id } = Astro.params;
+
+// Sélectionner le SCP dont son id est égal à celui demandé dans l'URL
+const results = await db
+  .select()
+  .from(ScpDescription)
+  .where(sql`${ScpDescription.id} = ${id}`);
+
+// Erreur 404, on devrait trouver en trouver qu'un
+if (results.length !== 1) {
+  return Astro.redirect("/404");
+}
+---
+
+<MainLayout>
+  <div class="Card"></div>
+</MainLayout>

@@ -1,47 +1,67 @@
 # Astro Starter Kit: Minimal
 
+## Infos
+
+Le fichier `.env` doit contenir:
+
+```ini
+ASTRO_HUGGING_CHAT_TOKEN=token # Si on ne veut pas d'oauth
+ASTRO_HUGGING_FACE_CLIENT_ID=clientid # Pour l'oauth
+```
+
+## Introduction
+
+J'ai commencé par créer un projet Astro minimal.
+
+Je vais utiliser ces outils dans mon stack, la majorité de ces outils sont inconnus à mes yeux (à part Typescript):
+
+- Astro
+  - Nouveau Framework web qui supporte le SSR, SSG et CSR
+  - Successeur spirituel de Gatsby
+- SQLite géré par Astro DB
+- Typescript (forcément)
+- Netlify
+  - Permet de déployer mon site sur internet, compatible avec Astro
+- Hugging Face (abregé en HF)
+  - Offre un API qui permet de connecter un utilisateur à mon application et bénéficier de l'API d'Inference LLM en tant qu'utilisateur, sans dépasser ma propre limite d'usage.
+
+L'idée initiale est de créer un site web perso de blog. Mais les consignes ont changées et on va utiliser un LLM pour générer des histoires.
+
+Donc le site:
+
+- Sera site web fourre-tout
+- Contiendra une page avec le LLM
+  - Un formulaire pour demander au LLM de générer l'histoire (Seulement si l'utilisateur est connecté avec HF)
+  - Une liste des générations précédentes
+  - Détails des générations précédentes en cliquant sur un élement de la liste
+- Sera deployé vers Netlify à chaque commit avec Github Actions
+
+Pour commencer, je crée mon projet Astro minimal.
+
 ```sh
 npm create astro@latest -- --template minimal
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### Les pages
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+J'ajoute un Layout dans `pages/layouts/MainLayout.astro` pour le style générale du site sur toutes les pages. Je crée également une page d'index principale et une page 404.
 
-## 🚀 Project Structure
+Enfin, j'ajoute le dossier contenant la page d'index pour mon générateur d'histoire `pages/scp/index.astro` ainsi que les pages de détails de l'histoire `pages/scp/[...id].astro`. Si l'utilisateur se rend à `/scp`, il trouvera la page d'index, si il va à `/scp/1`, il trouvera le premier SCP.
 
-Inside of your Astro project, you'll see the following folders and files:
+### Côté React
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Le dossier `components` contient les composants côté client en `.tsx` et on peut utiliser l'API du navigateur. Il faut ajouter l'attribut `client:load` dans la balise HTML.
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Les composants côté serveurs dans `components/server` sont rendus par le serveur et ne bénéficient pas de l'API du navigateur du client, il faut privilégier le rendu côté serveur pour garder les performances au client au maximum.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### API
 
-Any static assets, like images, can be placed in the `public/` directory.
+Astro utilise des fichiers `.ts` pour gérer le back-end à un plus bas niveau et créer des API en json par exemple.
 
-## 🧞 Commands
+J'ajoute un API pour soumettre le formulaire dans `pages/api/submit-scp.ts`, Astro supporte les fichiers javascript pour faire des API qui retournent du json par exemple.
 
-All commands are run from the root of the project, from a terminal:
+Et pour plus tard, un callback pour l'Oauth dans `pages/auth/callback.ts` mais j'ignore à quoi ça sert pour l'instant.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Fonctionnalités
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Pour le SISR vs SLAM, on va créer un composant React dans `components/SlamOrSisr.tsx` et on va l'ajouter à notre `MainLayout`

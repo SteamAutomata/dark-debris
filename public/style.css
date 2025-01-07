@@ -28,3 +28,15 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.sos-bubble {
+  display: flex;
+  flex-direction: column-reverse;
+
+  position: fixed;
+  left: 90%;
+}
+
+.sos-bubble {
+  border-radius: 100%;
+}
