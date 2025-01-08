@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@astrojs/db": "^0.14.5",
-    "@astrojs/netlify": "^6.0.1",
     "@astrojs/react": "^4.1.2",
+    "@astrojs/vercel": "^8.0.1",
     "@huggingface/hub": "^1.0.0",
     "@huggingface/inference": "^2.8.1",
     "@types/react": "^19.0.2",

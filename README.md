@@ -20,8 +20,9 @@ Je vais utiliser ces outils dans mon stack, la majorité de ces outils sont inco
   - Successeur spirituel de Gatsby
 - SQLite géré par Astro DB
 - Typescript (forcément)
-- Netlify
-  - Permet de déployer mon site sur internet, compatible avec Astro
+- ~~Netlify~~ Vercel
+  - Je voulais déployer mon site sur internet avec Netlify mais son architecture n'est pas adaptée à mes besoins de SSR.
+  - Vercel est un peu mieux et a une meilleur gestion du SSR.
 - Hugging Face (abregé en HF)
   - Offre un API qui permet de connecter un utilisateur à mon application et bénéficier de l'API d'Inference LLM en tant qu'utilisateur, sans dépasser ma propre limite d'usage.
 
@@ -34,7 +35,7 @@ Donc le site:
   - Un formulaire pour demander au LLM de générer l'histoire (Seulement si l'utilisateur est connecté avec HF)
   - Une liste des générations précédentes
   - Détails des générations précédentes en cliquant sur un élement de la liste
-- Sera deployé vers Netlify à chaque commit avec Github Actions
+- Sera deployé vers ~~Netlify~~ Vercel à chaque commit avec Github Actions
 
 Pour commencer, je crée mon projet Astro minimal.
 
@@ -65,3 +66,7 @@ Et pour plus tard, un callback pour l'Oauth dans `pages/auth/callback.ts` mais j
 ### Fonctionnalités
 
 Pour le SISR vs SLAM, on va créer un composant React dans `components/SlamOrSisr.tsx` et on va l'ajouter à notre `MainLayout`
+
+## ~~Netlify~~ Vercel
+
+Je crée une branche de développement pour Vercel
