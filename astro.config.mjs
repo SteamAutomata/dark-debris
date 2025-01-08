@@ -11,6 +11,7 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   integrations: [db(), react()],
   adapter: netlify(),
+  output: "server",
   env: {
     schema: {
       ASTRO_HUGGING_CHAT_TOKEN: envField.string({
