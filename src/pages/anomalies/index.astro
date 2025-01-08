@@ -1,7 +1,6 @@
 ---
 import { db } from "astro:db";
 import { ScpDescription } from "astro:db";
-import { oauthLoginUrl, oauthHandleRedirectIfPresent } from "@huggingface/hub";
 import ScpPrompt from "../../components/ScpPrompt";
 import MainLayout from "../../layouts/MainLayout.astro";
 
@@ -9,6 +8,8 @@ const descriptions = await db.select().from(ScpDescription).limit(10);
 ---
 
 <MainLayout>
+  <h1>Create an anomaly</h1>
+
   <div class="card">
     <ScpPrompt client:load />
   </div>
@@ -19,7 +20,7 @@ const descriptions = await db.select().from(ScpDescription).limit(10);
     {
       descriptions.map((scp) => (
         <div class="card">
-          <a href={`/scp/${scp.id}`}>
+          <a href={`/anomalies/${scp.id}`}>
             <h3>
               SCP-{scp.id} : {scp.title}
             </h3>
