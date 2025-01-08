@@ -1,4 +1,13 @@
-export async function POST({ request }: { request: Request }) {}
+export const prerender = false;
+
+export async function POST({ request }: { request: Request }) {
+  return Response.json(
+    {
+      request,
+    },
+    { status: 200 }
+  );
+}
 
 interface GETParams {
   request: Request;

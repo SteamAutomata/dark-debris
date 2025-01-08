@@ -4,6 +4,7 @@ import { ScpDescription } from "astro:db";
 import ScpPrompt from "../../components/ScpPrompt";
 import MainLayout from "../../layouts/MainLayout.astro";
 
+export const prerender = false;
 const descriptions = await db.select().from(ScpDescription).limit(10);
 ---
 
