@@ -8,7 +8,7 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   integrations: [db(), react()],
   output: "server",
-  adapter: vercel(),
+  adapter: vercel({ edgeMiddleware: true }),
   env: {
     schema: {
       ASTRO_HUGGING_CHAT_TOKEN: envField.string({
