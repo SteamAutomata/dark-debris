@@ -1,4 +1,5 @@
 ---
+import PokemonIcon from "../../components/PokemonIcon";
 import MainLayout from "../../layouts/MainLayout.astro";
 
 export const prerender = false;
@@ -17,11 +18,12 @@ const pokemon = await result.json();
   <div class="card">
     <span style="display: flex; align-items: center;">
       <h2>{pokemon.name}</h2>
-      <img
-        id=`${pokemon.name}-logo`
-        src={pokemon.sprites.front_default}
+      <PokemonIcon
+        client:load
         width="64px"
         height="64px"
+        src={pokemon.sprites.front_default}
+        soundUrl={pokemon.cries.latest}
       />
     </span>
 
