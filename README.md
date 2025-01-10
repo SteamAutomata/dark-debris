@@ -25,6 +25,7 @@ Je vais utiliser ces outils dans mon stack, la majorité de ces outils sont inco
   - Vercel est un peu mieux et a une meilleur gestion du SSR.
 - Hugging Face (abregé en HF)
   - Offre un API qui permet de connecter un utilisateur à mon application et bénéficier de l'API d'Inference LLM en tant qu'utilisateur, sans dépasser ma propre limite d'usage.
+  - Aussi bénéficier d'une clé privée pour que mon api communique au LLM sans demander à l'utilisateur de se connecter.
 
 L'idée initiale est de créer un site web perso de blog. Mais les consignes ont changées et on va utiliser un LLM pour générer des histoires.
 
@@ -35,6 +36,7 @@ Donc le site:
   - Un formulaire pour demander au LLM de générer l'histoire (Seulement si l'utilisateur est connecté avec HF)
   - Une liste des générations précédentes
   - Détails des générations précédentes en cliquant sur un élement de la liste
+- Un petit assistant LLM pour les utilisateurs anonymes pour savoir si un truc est SISR ou SLAM
 - Sera deployé vers ~~Netlify~~ Vercel à chaque commit avec Github Actions
 
 Pour commencer, je crée mon projet Astro minimal.

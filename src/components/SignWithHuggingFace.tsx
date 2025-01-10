@@ -7,6 +7,7 @@ export default function SignWithHuggingFace() {
       src="https://huggingface.co/datasets/huggingface/badges/resolve/main/sign-in-with-huggingface-xl-dark.svg"
       alt="Sign in with Hugging Face"
       style={{ cursor: "pointer" }}
+      className="h-7"
       onClick={async () => {
         window.location.href = await oauthLoginUrl({
           clientId: ASTRO_HUGGING_FACE_CLIENT_ID,

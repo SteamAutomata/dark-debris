@@ -18,7 +18,7 @@
 .card {
   border-color: gray;
   border-radius: 8px;
-  border-style: ridge;
+  border-style: solid;
 
   margin: 8px;
   padding: 8px;
@@ -35,10 +35,14 @@
 
   position: fixed;
   left: 90%;
+  border-radius: 100%;
 }
 
-.sos-bubble {
-  border-radius: 100%;
+.sos-panel {
+  position: fixed;
+  top: auto;
+  bottom: auto;
+  background-color: antiquewhite;
 }
 
 body {

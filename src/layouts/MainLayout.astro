@@ -1,21 +1,21 @@
 ---
 import SlamOrSisr from "../components/slamsisr/SlamOrSisr";
-
-const { title } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/style.css" />
+    <!-- <link rel="stylesheet" href="/style.css" /> -->
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
 
-  <body>
+  <body
+    class="flex flex-col justify-center text-center align-middle max-w-md m-auto bg-slate-200 gap-2"
+  >
     <slot />
-    <SlamOrSisr />
+    <SlamOrSisr client:load />
   </body>
 </html>

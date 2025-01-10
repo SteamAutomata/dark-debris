@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/db": "^0.14.5",
     "@astrojs/react": "^4.1.2",
+    "@astrojs/tailwind": "^5.1.4",
     "@astrojs/vercel": "^8.0.1",
     "@huggingface/hub": "^1.0.0",
     "@huggingface/inference": "^2.8.1",
@@ -20,6 +21,7 @@
     "ai": "^4.0.26",
     "astro": "^5.1.2",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.17"
   }
 }

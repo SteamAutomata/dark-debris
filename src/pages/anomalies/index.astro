@@ -3,32 +3,33 @@ import { db } from "astro:db";
 import { ScpDescription } from "astro:db";
 import ScpPrompt from "../../components/ScpPrompt";
 import MainLayout from "../../layouts/MainLayout.astro";
+import Card from "../../layouts/Card.astro";
 
 export const prerender = false;
 const descriptions = await db.select().from(ScpDescription).limit(10);
 ---
 
 <MainLayout>
-  <h1>Create an anomaly</h1>
-
-  <div class="card">
+  <Card>
+    <h1>Create an anomaly</h1>
     <ScpPrompt client:load />
-  </div>
+  </Card>
 
-  <div class="card">
-    <h2>Anomaly Database</h2>
+  <hr />
 
+  <Card>
+    <h1>Anomaly Database</h1>
     {
       descriptions.map((scp) => (
-        <div class="card">
+        <Card>
           <a href={`/anomalies/${scp.id}`}>
             <h3>
               SCP-{scp.id} : {scp.title}
             </h3>
             <h3>Containment Class: {scp.class}</h3>
           </a>
-        </div>
+        </Card>
       ))
     }
-  </div>
+  </Card>
 </MainLayout>
