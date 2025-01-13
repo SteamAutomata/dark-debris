@@ -55,7 +55,7 @@ export default function SlamOrSisr() {
 			<div>
 				<button
 					type="button"
-					className="rounded-full shadow-indigo-950 shadow-lg size-11 fixed right-6 bottom-6 bg-indigo-700 text-white"
+					className="rounded-full fixed right-6 size-11 bottom-6 btn"
 					onClick={() => setVisible(!visible)}
 				>
 					<span>?</span>
@@ -64,3 +64,4 @@ export default function SlamOrSisr() {
 		</>
 	)
 }
+// rounded-full shadow-indigo-950 shadow-lg size-11 fixed right-6 bottom-6 bg-indigo-700 text-white
