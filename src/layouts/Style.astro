@@ -1,0 +1,80 @@
+<style>
+	body {
+		background-image: url("/Tile-Bg-Autumn-saturation.webp");
+		background-repeat: repeat;
+	}
+
+	p {
+		width: clamp(45ch, 50%, 75ch);
+	}
+
+	main {
+		min-width: clamp(400px, 100%, 800px);
+	}
+
+	a {
+		color: #0070f3;
+		text-decoration: none;
+		border-bottom: 1px solid #0070f3;
+	}
+
+	/* @media not (prefers-reduced-motion) { */
+	body {
+		animation: scrollBackground 10s linear infinite;
+	}
+
+	li {
+		animation: dropIn 0.5s ease-out forwards;
+	}
+
+	li .drop,
+	.drop1,
+	.drop2,
+	.drop3 {
+		animation: dropIn 0.5s ease-out forwards;
+		animation-delay: calc(var(--order) * 100ms);
+	}
+	.drop1 {
+		--order: 1;
+	}
+	.drop2 . {
+		--order: 2;
+	}
+	.drop3 {
+		--order: 1;
+	}
+	.jumpscare {
+		interpolate-size: allow-keywords;
+		animation: jumpscare 0.2s ease-out forwards;
+	}
+
+	@keyframes scrollBackground {
+		0% {
+			background-position: 0 0;
+		}
+		100% {
+			background-position: 250px 250px;
+		}
+	}
+
+	@keyframes jumpscare {
+		0% {
+			transform: scale(0);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+
+	@keyframes dropIn {
+		0% {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+	/* } */
+</style>
