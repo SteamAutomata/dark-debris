@@ -1,15 +1,21 @@
-<style>
+<style is:global>
 	body {
 		background-image: url("/Tile-Bg-Autumn-saturation.webp");
 		background-repeat: repeat;
+		font-size: 1rem;
 	}
 
-	p {
+	/* p {
 		width: clamp(45ch, 50%, 75ch);
-	}
+	} */
 
 	main {
-		min-width: clamp(400px, 100%, 800px);
+		width: 800px;
+	}
+	@media screen and (max-width: 800px) {
+		main {
+			width: 100%;
+		}
 	}
 
 	a {
@@ -47,6 +53,47 @@
 		interpolate-size: allow-keywords;
 		animation: jumpscare 0.2s ease-out forwards;
 	}
+	.reverse-jumpscare {
+		animation: reverse-jumpscare 0.2s ease-out forwards;
+	}
+
+	.speech-bubble {
+		position: fixed;
+
+		width: 75ch;
+		height: fit-content;
+
+		left: 0;
+		right: 100%;
+		inset: 0;
+		margin: auto;
+		bottom: 4rem;
+
+		line-height: 20px;
+		font-size: 14px;
+		padding: 10px;
+		text-align: center;
+
+		color: rgb(68, 90, 96);
+		background: rgb(255, 255, 255);
+		border: 4px solid rgb(255, 255, 255);
+		border-radius: 5px;
+
+		text-shadow: rgba(0, 0, 0, 0.1) 1px 1px 1px;
+		box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 0px;
+	}
+
+	/* .speech-bubble:after {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-width: 10px;
+		border-style: solid;
+		border-color: #ffffff transparent transparent transparent;
+		top: 44px;
+		left: 50px;
+	} */
 
 	@keyframes scrollBackground {
 		0% {
@@ -63,6 +110,15 @@
 		}
 		100% {
 			transform: scale(1);
+		}
+	}
+
+	@keyframes reverse-jumpscare {
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(0);
 		}
 	}
 
