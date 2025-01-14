@@ -13,21 +13,21 @@ const { title } = Astro.props
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<!-- <link rel="stylesheet" href="/style.css" /> -->
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
 
 		<Style is:global />
 	</head>
 
-	<body class="flex flex-col items-center justify-center min-h-screen">
+	<body class="flex flex-col items-center justify-center pt-8">
 		<main
-			class="bg-opacity-100 bg-slate-50 text-black dark:bg-slate-800 dark:text-white rounded-lg min-h-screen"
+			class="bg-opacity-100 bg-slate-50 text-black dark:bg-slate-800 dark:text-white rounded-lg p-8"
 		>
-			<h1 class="text-xl drop" style="--order: 0;">{title}</h1>
+			<h1 class="drop" style="--order: 0;">{title}</h1>
 			<slot />
 		</main>
 
-		<SlamOrSisr client:load />
+		<SlamOrSisr client:load client:only />
 	</body>
 </html>

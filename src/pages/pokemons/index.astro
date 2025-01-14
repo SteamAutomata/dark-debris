@@ -20,21 +20,23 @@ pokemons.results.forEach((pokemon: any) => {
 
 <MainLayout title="Pokédex">
 	<Pagination currentPage={page} pages={Math.floor(pokemons.count / 20)} />
+	<div class="h-4"></div>
 	<!-- Tous les pokémons -->
-	<div class="grid">
+	<div class="flex flex-wrap items-stretch gap-2">
 		{
 			pokemons.results.map((pokemon: any) => (
-				<a href={`/pokemons/${pokemon.name}`}>
-					<div class="card">
-						<span style="display: flex; align-items: center;">
-							<h3>{pokemon.name}</h3>
-							<img
-								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${images[pokemon.name]}.png`}
-								width="64px"
-								height="64px"
-							/>
-						</span>
-					</div>
+				<a
+					href={`/pokemons/${pokemon.name}`}
+					class="border border-indigo-500 rounded-lg shadow-md shadow-indigo-800"
+				>
+					<span class="flex items-center">
+						<h3>{pokemon.name}</h3>
+						<img
+							src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${images[pokemon.name]}.png`}
+							width="64px"
+							height="64px"
+						/>
+					</span>
 				</a>
 			))
 		}
