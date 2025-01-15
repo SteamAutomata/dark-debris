@@ -1,41 +1,41 @@
 ---
-import PokemonIcon from "../../components/PokemonIcon";
-import MainLayout from "../../layouts/MainLayout.astro";
+import PokemonIcon from "../../components/PokemonIcon"
+import MainLayout from "../../layouts/MainLayout.astro"
 
-export const prerender = false;
+export const prerender = false
 
-const { name } = Astro.params;
+const { name } = Astro.params
 
-const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
 if (result.status === 404) {
-  return Astro.redirect("/404");
+	return Astro.redirect("/404")
 }
 
-const pokemon = await result.json();
+const pokemon = await result.json()
 ---
 
-<MainLayout>
-  <div class="card">
-    <span style="display: flex; align-items: center;">
-      <h2>{pokemon.name}</h2>
-      <PokemonIcon
-        client:load
-        width="64px"
-        height="64px"
-        src={pokemon.sprites.front_default}
-        soundUrl={pokemon.cries.latest}
-      />
-    </span>
+<MainLayout title="">
+	<div class="card">
+		<span style="display: flex; align-items: center;">
+			<h2>{pokemon.name}</h2>
+			<PokemonIcon
+				client:load
+				width="64px"
+				height="64px"
+				src={pokemon.sprites.front_default}
+				soundUrl={pokemon.cries.latest}
+			/>
+		</span>
 
-    <section class="card">
-      <h3>Capacités</h3>
-      <ul>
-        {
-          pokemon.abilities.map((ability: any) => (
-            <li>{ability.ability.name}</li>
-          ))
-        }
-      </ul>
-    </section>
-  </div>
+		<section class="card">
+			<h3>Capacités</h3>
+			<ul>
+				{
+					pokemon.abilities.map((ability: any) => (
+						<li>{ability.ability.name}</li>
+					))
+				}
+			</ul>
+		</section>
+	</div>
 </MainLayout>

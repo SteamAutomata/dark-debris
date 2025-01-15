@@ -72,3 +72,23 @@ Pour le SISR vs SLAM, on va créer un composant React dans `components/SlamOrSis
 ## ~~Netlify~~ Vercel
 
 Je crée une branche de développement pour Vercel
+
+# Restyle du site
+Le site est fonctionnel, mais il est très moche alors j'ai créé une branche Restyle pour restyler le site. J'ai aussi travaillé sur l'agent LLM sur cette branche.
+
+# Assistant LLM
+
+Au départ je voulais faire un simple formulaire et quand on écrit un prompt et qu'on clique sur soumettre: interroger un LLM si le prompt est à propos du SLAM ou du SISR.
+
+J'ai donc programmé quelque chose de rudimentaire et pas très joli à regarder, mais ça fonctionne malgré la mauvaise UX.
+
+Donc après l'avoir fait, je l'ai développé un peu plus, le transformant en un agent LLM un peu plus généraliste. Mais cette fois ci il y aura une bulle de texte animé avec des effets sonores et un effet "machine a écrir" qui s'affiche. L'intérêt est limité, mais reste joli et immersif, donnant un petit côté "Jeu vidéo". De plus, dans le futur, je souhaite convertir ça en un petit personnage qui parle similaire à Clippy.
+
+![clippy](docs/clippy.jpg)
+
+Donc j'ai commencé par créé un composant React pour SlamOrSisr séparé en plusieurs petits composants, dans un seul fichier. J'ai commencé à mieux diviser les composants, le SpeechBubble a été mit dans son propre fichier mais le panneau et le bouton pour l'afficher ont été gardé dans SlamOrSisr.
+
+Le plus gros soucis était de faire l'animation. C'est une animation CSS donc il suffit juste de changer la classe.
+Mais il ne faut pas démonter immédiatement le composant "SpeechBubble", sinon l'animation ne se joue pas (logique car le composant n'est plus rendu dans le DOM).
+
+L'effet de machine à écrire est artificielle, c'est à dire que le serveur envoie au client le texte intégralement généré, et le client simule une machine à écrire. Mais c'est pas l'approche qui se fait normalement
