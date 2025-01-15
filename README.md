@@ -76,6 +76,8 @@ Je crée une branche de développement pour Vercel
 # Restyle du site
 Le site est fonctionnel, mais il est très moche alors j'ai créé une branche Restyle pour restyler le site. J'ai aussi travaillé sur l'agent LLM sur cette branche.
 
+![alt text](docs/before-restyle.png)
+
 # Assistant LLM
 
 Au départ je voulais faire un simple formulaire et quand on écrit un prompt et qu'on clique sur soumettre: interroger un LLM si le prompt est à propos du SLAM ou du SISR.
@@ -90,5 +92,7 @@ Donc j'ai commencé par créé un composant React pour SlamOrSisr séparé en pl
 
 Le plus gros soucis était de faire l'animation. C'est une animation CSS donc il suffit juste de changer la classe.
 Mais il ne faut pas démonter immédiatement le composant "SpeechBubble", sinon l'animation ne se joue pas (logique car le composant n'est plus rendu dans le DOM).
+
+![alt text](docs/after-restyle.png)
 
 L'effet de machine à écrire est artificielle, c'est à dire que le serveur envoie au client le texte intégralement généré, et le client simule une machine à écrire. Mais c'est pas l'approche qui se fait normalement
